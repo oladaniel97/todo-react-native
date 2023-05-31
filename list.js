@@ -10,7 +10,7 @@ export default function List({todo,setTodo}) {
         ()=>{
             async function getdata(){
                 try {
-                    const item = AsyncStorage.getItem('@todo');
+                    const item = AsyncStorage.getItem('todo');
                     setTodo(item != null? JSON.parse(item) : []);
                 } catch (error) {
                     console.log(error)
