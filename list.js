@@ -1,17 +1,18 @@
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React, { useEffect } from 'react'
+import React, { useEffect,useState } from 'react'
 import { AntDesign } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
-export default function List({todo,setTodo}) {
+export default function List() {
+    const [todo, setTodo] = useState([]);
     useEffect(
         ()=>{
             async function getdata(){
                 try {
                     const item = AsyncStorage.getItem('todo');
-                    setTodo(item != null? JSON.parse(item) : []);
+                    if(item !== null) {setTodo(JSON.parse(item));}
                 } catch (error) {
                     console.log(error)
                 }
