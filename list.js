@@ -11,7 +11,7 @@ export default function List() {
         ()=>{
             async function getdata(){
                 try {
-                    const item = AsyncStorage.getItem('todo');
+                    const item =await AsyncStorage.getItem('todo');
                     if(item !== null) {setTodo(JSON.parse(item));}
                 } catch (error) {
                     console.log(error)
