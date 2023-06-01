@@ -1,7 +1,9 @@
-import { Alert, Keyboard, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { Alert, Keyboard, StyleSheet, Text, TextInput, TouchableOpacity, View,Dimensions } from 'react-native'
 import React from 'react'
 import shortid from 'shortid';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
+const width = Dimensions.get('window').width
 
 export default function Form({value,setValue,todo,setTodo}) {
 
@@ -45,11 +47,11 @@ const styles = StyleSheet.create({
         alignItems:'center',
         justifyContent: 'space-between',
         marginTop:20,
-        marginHorizontal:15
+        marginHorizontal:0.05*width
 
     },
     submit:{
-        paddingHorizontal:20,
+        paddingHorizontal:0.05*width,
         paddingVertical:10,
         backgroundColor:'teal',
         borderRadius:5,
@@ -59,7 +61,7 @@ const styles = StyleSheet.create({
         color:'white'
     },
     input:{
-        width:300,
+        width:0.6*width,
         borderRadius:5,
         padding:10,
         borderColor:'gray',
