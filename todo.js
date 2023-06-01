@@ -12,7 +12,7 @@ export default function Todo() {
         <Text style={styles.text}>Personal Todo-List</Text>
       </View>
       <Form value={value} setValue={setValue} todo={todo} setTodo={setTodo}/>
-      <List value={value} setValue={setValue} todo={todo} setTodo={setTodo}/>
+      <List todo={todo} setTodo={setTodo}/>
     </View>
   )
 }

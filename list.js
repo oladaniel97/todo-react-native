@@ -5,14 +5,15 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
-export default function List() {
-    const [todo, setTodo] = useState([]);
+export default function List({todo,setTodo}) {
+    // const [todo, setTodo] = useState([]);
     useEffect(
         ()=>{
             async function getdata(){
                 try {
                     const item =await AsyncStorage.getItem('todo');
                     if(item !== null) {setTodo(JSON.parse(item));}
+                    console.log('item',item)
                 } catch (error) {
                     console.log(error)
                 }
@@ -22,12 +23,14 @@ export default function List() {
 
     const Delete= async(key)=>{
         try {
-            await AsyncStorage.removeItem(key)
+            
             setTodo(todo.filter((item)=>item.key!==key))
+            await AsyncStorage.setItem('todo',JSON.stringify(todo.filter((item)=>item.key!==key)))
         } catch (error) {
             console.log(error)
         }
     }
+    console.log(todo)
   return (
     <View style={styles.container}>
       <FlatList
